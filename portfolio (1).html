@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rithvik Kotha | Data Analyst & Aspiring Data Engineer</title>
+<meta name="description" content="Rithvik Kotha — CS Engineering student, Data Analyst & aspiring Data Engineer. Python, SQL, Azure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F1EA;
+    --card:#FFFFFF;
+    --dark:#171310;
+    --ink:#1E1B18;
+    --ink-dim:#6B6459;
+    --line: rgba(30,27,24,0.1);
+    --accent:#D9662C;
+    --accent-soft: rgba(217,102,44,0.08);
+    --radius:14px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{ font-family:'Playfair Display', serif; }
+  .serif em{ font-style:italic; color:var(--accent); font-weight:600; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 48px; }
+
+  nav{ border-bottom:1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:80px; }
+  nav .tagline{ font-family:'Playfair Display', serif; font-size:20px; }
+  nav ul{ display:flex; align-items:center; gap:34px; list-style:none; }
+  nav ul li a{ font-size:15px; color:var(--ink); }
+  nav ul li a.contact-btn{ background:var(--dark); color:#F5F1EA; padding:11px 22px; border-radius:30px; font-weight:500; }
+
+  header.hero{ padding:70px 0 0; }
+  .hero-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:40px; align-items:start; }
+  .badge{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em;
+    color:var(--accent); border:1px solid rgba(217,102,44,0.35); background:var(--accent-soft);
+    padding:8px 16px; border-radius:20px; margin-bottom:30px; text-transform:uppercase;
+  }
+  .hero-grid h1{ font-size:clamp(38px, 6vw, 66px); font-weight:700; line-height:1.05; margin-bottom:14px; }
+  #typewriter{ font-family:'IBM Plex Mono', monospace; font-size:18px; color:var(--accent); min-height:28px; margin-bottom:22px; }
+  #typewriter .cursor{ opacity:.6; }
+  .hero-grid p.lede{ font-size:18px; color:var(--ink-dim); max-width:560px; margin-bottom:34px; line-height:1.65; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ font-family:'Inter'; font-size:15px; font-weight:500; padding:15px 28px; border-radius:30px; display:inline-block; transition:opacity .2s; cursor:pointer; border:none; }
+  .btn.primary{ background:var(--dark); color:#F5F1EA; }
+  .btn.ghost{ background:transparent; border:1px solid var(--line); color:var(--ink); }
+  .btn:hover{ opacity:.85; }
+
+  .avatar-box{
+    width:200px; max-width:100%; aspect-ratio:4/5; background:linear-gradient(145deg,#3A342C,#171310);
+    border-radius:var(--radius); display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px; margin-left:auto;
+  }
+  .avatar-box span{ font-family:'Playfair Display', serif; font-size:40px; color:#F5F1EA; }
+  .pill-stack{ display:flex; flex-direction:column; gap:10px; }
+  .info-pill{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:14px 18px; font-size:14px; display:flex; align-items:center; gap:10px;
+  }
+  .info-pill .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+  .stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); margin-top:60px; }
+  .stat-strip .stat{ padding:36px 0; border-right:1px solid var(--line); }
+  .stat-strip .stat:last-child{ border-right:none; }
+  .stat-strip .num{ font-family:'Playfair Display', serif; font-size:34px; margin-bottom:6px; }
+  .stat-strip .label{ font-size:12.5px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.05em; }
+
+  section{ padding:90px 0; border-top:1px solid var(--line); }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--accent);
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:20px;
+  }
+  .eyebrow::before{ content:''; width:24px; height:1px; background:var(--accent); }
+  .section-head{ display:grid; grid-template-columns:1fr 1.4fr; gap:50px; align-items:start; margin-bottom:10px; }
+  .section-head h2{ font-size:clamp(30px, 3.5vw, 42px); font-weight:600; }
+  .section-head .body{ font-size:17px; color:var(--ink-dim); line-height:1.7; }
+  .section-head .body p{ margin-bottom:20px; }
+
+  .exp-card{
+    display:grid; grid-template-columns:0.9fr 2fr; gap:40px;
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:44px; border-left:4px solid var(--accent);
+  }
+  .exp-left .date{ font-weight:600; margin-bottom:10px; }
+  .exp-left .company{ color:var(--accent); font-weight:600; margin-bottom:4px; }
+  .exp-left .loc{ color:var(--ink-dim); font-size:14px; }
+  .exp-right h3{ font-family:'Playfair Display', serif; font-size:26px; margin-bottom:20px; }
+  .exp-right ul{ list-style:none; }
+  .exp-right ul li{ position:relative; padding-left:22px; margin-bottom:14px; color:var(--ink-dim); font-size:15px; line-height:1.6; }
+  .exp-right ul li::before{ content:'—'; position:absolute; left:0; color:var(--accent); }
+  .exp-right ul li strong{ color:var(--ink); font-weight:600; }
+
+  .project-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .project-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:34px; }
+  .card-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+  .tag-pill{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.05em;
+    color:var(--accent); background:var(--accent-soft); border:1px solid rgba(217,102,44,0.3);
+    padding:5px 12px; border-radius:14px; text-transform:uppercase;
+  }
+  .year{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-dim); }
+  .project-card h3{ font-size:20px; font-weight:600; margin-bottom:10px; }
+  .project-card p.desc{ font-size:14.5px; color:var(--ink-dim); line-height:1.65; margin-bottom:18px; }
+  .stack-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .stack-row span{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; padding:5px 11px; border-radius:12px; background:var(--bg); border:1px solid var(--line); color:var(--ink-dim); }
+
+  .skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px; }
+  .skill-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:30px; }
+  .skill-card h4{ font-size:15px; font-weight:600; margin-bottom:18px; }
+  .pill-list{ display:flex; flex-wrap:wrap; gap:10px; }
+  .pill-list span{ font-size:13.5px; padding:9px 16px; border-radius:20px; border:1px solid var(--line); background:var(--bg); }
+  .skill-card.next{ grid-column:1/-1; }
+
+  .phil-item{ display:grid; grid-template-columns:70px 1fr; gap:20px; padding:28px 0; border-top:1px solid var(--line); }
+  .phil-item:first-of-type{ border-top:none; }
+  .phil-num{ font-family:'Playfair Display', serif; font-size:20px; color:var(--ink-dim); }
+  .phil-item h4{ font-size:18px; font-weight:600; margin-bottom:8px; }
+  .phil-item p{ color:var(--ink-dim); font-size:15px; line-height:1.65; }
+  .quote{ margin-top:40px; font-size:18px; font-style:italic; color:var(--ink-dim); }
+
+  footer{ background:var(--dark); color:#F5F1EA; padding:110px 0 50px; text-align:center; }
+  footer h2{ font-size:clamp(32px,5vw,52px); margin-bottom:16px; }
+  footer h2 em{ color:var(--accent); font-style:italic; }
+  footer p.sub{ color:rgba(245,241,234,0.65); font-size:16px; margin-bottom:40px; }
+  .contact-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; }
+  .contact-row a{ display:flex; align-items:center; gap:8px; padding:14px 26px; border-radius:30px; font-size:15px; font-weight:500; }
+  .contact-row a.light{ background:#F5F1EA; color:var(--dark); }
+  .contact-row a.outline{ border:1px solid rgba(245,241,234,0.25); }
+  .foot-bottom{ display:flex; justify-content:space-between; border-top:1px solid rgba(245,241,234,0.12); padding-top:24px; font-size:13px; color:rgba(245,241,234,0.5); }
+
+  @media(max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .stat-strip{ grid-template-columns:1fr 1fr; }
+    .section-head{ grid-template-columns:1fr; }
+    .exp-card{ grid-template-columns:1fr; padding:30px; }
+    .project-grid{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr; }
+    nav ul{ display:none; }
+    .wrap{ padding:0 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="tagline">Learn deep, build with purpose</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#contact" class="contact-btn">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="badge">Software Engineering + Data Systems</span>
+        <h1 class="serif">Rithvik <em>Kotha</em></h1>
+        <div id="typewriter" class="mono"><span id="tw-text"></span><span class="cursor">|</span></div>
+        <p class="lede">Data Analyst and aspiring Data Engineer with growing expertise in Azure cloud services, Apache Spark, Python, and SQL — currently exploring agentic AI pipelines, lakehouse architectures, and predictive analytics.</p>
+        <div class="cta-row">
+          <a href="#projects" class="btn primary">View Projects</a>
+          <a href="#contact" class="btn ghost">Get in touch</a>
+        </div>
+      </div>
+      <div>
+        <div class="avatar-box"><span>RK</span></div>
+        <div class="pill-stack">
+          <div class="info-pill"><span class="dot"></span>Open to internships</div>
+          <div class="info-pill"><span class="dot"></span>B.Tech CSE — VIT Chennai</div>
+          <div class="info-pill"><span class="dot"></span>Chennai, India</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip" id="stat-strip">
+      <div class="stat"><div class="num serif" data-target="1" data-suffix="">0</div><div class="label">Internship</div></div>
+      <div class="stat"><div class="num serif" data-target="9" data-suffix="+">0</div><div class="label">Projects Shipped</div></div>
+      <div class="stat"><div class="num serif" data-target="3" data-suffix="+">0</div><div class="label">Production-grade</div></div>
+      <div class="stat"><div class="num serif">2027</div><div class="label">Graduating</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">About</span>
+        <h2 class="serif">Learning by <em>Building</em></h2>
+      </div>
+      <div class="body">
+        <p>I'm a Data Analyst and aspiring Data Engineer with a passion for turning complex, unstructured data into clear, actionable insights.</p>
+        <p>Currently exploring agentic AI pipelines, lakehouse architectures, and predictive analytics, alongside my B.Tech in Computer Science (expected 2027).</p>
+        <p>I care about writing code that's clear enough for someone else to pick up, and systems that keep working after I've moved on to the next thing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="eyebrow">Career</span>
+    <h2 class="serif" style="font-size:clamp(30px,4vw,44px); margin-bottom:44px;">Professional <em>Experience</em></h2>
+
+    <div class="exp-card">
+      <div class="exp-left">
+        <div class="date">Aug 2025 — Present</div>
+        <div class="company">Vita Data Solutions Pvt Ltd</div>
+        <div class="loc">Chennai, India</div>
+      </div>
+      <div class="exp-right">
+        <h3>Data Analyst Intern</h3>
+        <ul>
+          <li>Built <strong>Power BI dashboards</strong> and optimised <strong>SQL reporting pipelines</strong> for stakeholder reporting.</li>
+          <li>Wrote <strong>SQL queries and Python scripts</strong> to clean and validate datasets feeding weekly business reports.</li>
+          <li>Helped design <strong>data pipelines</strong> pulling from multiple source systems into a central reporting layer.</li>
+          <li>Worked with senior analysts to catch and fix <strong>data quality issues</strong> before they reached production reports.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="eyebrow">Projects</span>
+    <h2 class="serif" style="font-size:clamp(30px,4vw,44px); margin-bottom:44px;">Featured <em>Work</em></h2>
+
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="card-top"><span class="tag-pill">Data Pipeline</span><span class="year">2024</span></div>
+        <h3>Azure Lakehouse Pipeline</h3>
+        <p class="desc">End-to-end medallion lakehouse on Azure Synapse & Delta Lake, built to handle daily ingestion with automated schema evolution, incremental loads, and SLA monitoring.</p>
+        <div class="stack-row"><span>PySpark</span><span>Azure Synapse</span><span>Delta Lake</span><span>ADF</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-top"><span class="tag-pill">ML / AI</span><span class="year">2024</span></div>
+        <h3>Predictive Health Analytics</h3>
+        <p class="desc">ML platform for biomarker-based health risk prediction, integrating wearable data, HRV, sleep stages, and lab results — XGBoost + SHAP for explainable outputs.</p>
+        <div class="stack-row"><span>Python</span><span>XGBoost</span><span>SHAP</span><span>FastAPI</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-top"><span class="tag-pill">Streaming</span><span class="year">2023</span></div>
+        <h3>Real-time Event Streaming</h3>
+        <p class="desc">Event processing pipeline on Azure Event Hubs with Stream Analytics and Power BI dashboards for low-latency monitoring.</p>
+        <div class="stack-row"><span>Event Hubs</span><span>Kafka</span><span>Stream Analytics</span><span>Power BI</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="eyebrow">Skills</span>
+    <h2 class="serif" style="font-size:clamp(30px,4vw,44px); margin-bottom:44px;">Technical <em>Skills</em></h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Use Regularly</h4>
+        <div class="pill-list">
+          <span>Python</span><span>SQL</span><span>Azure Data Factory</span><span>Azure Synapse</span>
+          <span>PySpark</span><span>Databricks</span><span>Delta Lake</span><span>Git & GitHub</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Learning & Experimenting</h4>
+        <div class="pill-list">
+          <span>XGBoost</span><span>SHAP</span><span>FastAPI</span><span>scikit-learn</span><span>Docker</span><span>Azure Event Hubs</span>
+        </div>
+      </div>
+      <div class="skill-card next">
+        <h4>Next Up</h4>
+        <div class="pill-list">
+          <span>System design fundamentals</span><span>CI/CD pipelines</span><span>Kubernetes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="philosophy">
+  <div class="wrap">
+    <span class="eyebrow">Philosophy</span>
+    <h2 class="serif" style="font-size:clamp(30px,4vw,44px); margin-bottom:20px;">Engineering <em>Mindset</em></h2>
+
+    <div class="phil-item">
+      <div class="phil-num">01</div>
+      <div><h4>Build to Understand</h4><p>Reading about a concept only gets me halfway. I build small, real versions of things to actually understand how they break and why.</p></div>
+    </div>
+    <div class="phil-item">
+      <div class="phil-num">02</div>
+      <div><h4>Write for the Next Person</h4><p>Code is read far more than it's written. I try to name things clearly and leave a trail someone else — including future me — can follow.</p></div>
+    </div>
+    <div class="phil-item">
+      <div class="phil-num">03</div>
+      <div><h4>Ship, Then Improve</h4><p>A working version today beats a perfect plan next month. I'd rather get something real in front of feedback and iterate from there.</p></div>
+    </div>
+    <p class="quote serif">"Build things that matter."</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 class="serif">Want to build <em>something</em>?</h2>
+    <p class="sub">Open to SWE and data engineering internships — let's connect.</p>
+    <div class="contact-row">
+      <a href="https://rithvik-kotha.github.io/" target="_blank" class="light">Portfolio</a>
+      <a href="https://linkedin.com/in/rithvik-kotha" target="_blank" class="outline">LinkedIn</a>
+      <a href="https://github.com/rithvikreddykotha" target="_blank" class="outline">GitHub</a>
+      <a href="mailto:kotharithvikreddy10@gmail.com" class="outline">Email</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Rithvik Kotha</span>
+      <span>Data Analyst · 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Typewriter effect
+  const roles = ["Data Analyst & ML Enthusiast", "Building things that matter.", "Aspiring Data Engineer"];
+  const twText = document.getElementById('tw-text');
+  let roleIdx = 0, charIdx = 0, deleting = false;
+
+  function tick(){
+    const current = roles[roleIdx % roles.length];
+    if(!deleting && charIdx <= current.length){
+      twText.textContent = current.slice(0, charIdx);
+      charIdx++;
+      setTimeout(tick, 45);
+    } else if(!deleting && charIdx > current.length){
+      deleting = true;
+      setTimeout(tick, 1400);
+    } else if(deleting && charIdx > 0){
+      charIdx--;
+      twText.textContent = current.slice(0, charIdx);
+      setTimeout(tick, 28);
+    } else {
+      deleting = false;
+      roleIdx++;
+      setTimeout(tick, 200);
+    }
+  }
+  tick();
+
+  // Count-up stats on scroll into view
+  const statEls = document.querySelectorAll('.num[data-target]');
+  let counted = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && !counted){
+        counted = true;
+        statEls.forEach(el => {
+          const target = parseInt(el.dataset.target, 10);
+          const suffix = el.dataset.suffix || "";
+          const duration = 1200;
+          const start = performance.now();
+          function step(now){
+            const p = Math.min((now - start) / duration, 1);
+            el.textContent = Math.floor(p * target) + suffix;
+            if(p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  observer.observe(document.getElementById('stat-strip'));
+</script>
+
+</body>
+</html>
